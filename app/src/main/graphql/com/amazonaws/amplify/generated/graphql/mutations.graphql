@@ -1,0 +1,187 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateCoach(
+  $input: CreateCoachInput!
+  $condition: ModelCoachConditionInput
+) {
+  createCoach(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateCoach(
+  $input: UpdateCoachInput!
+  $condition: ModelCoachConditionInput
+) {
+  updateCoach(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteCoach(
+  $input: DeleteCoachInput!
+  $condition: ModelCoachConditionInput
+) {
+  deleteCoach(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateStudent(
+  $input: CreateStudentInput!
+  $condition: ModelStudentConditionInput
+) {
+  createStudent(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    coachID
+    coach {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateStudent(
+  $input: UpdateStudentInput!
+  $condition: ModelStudentConditionInput
+) {
+  updateStudent(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    coachID
+    coach {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteStudent(
+  $input: DeleteStudentInput!
+  $condition: ModelStudentConditionInput
+) {
+  deleteStudent(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    coachID
+    coach {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

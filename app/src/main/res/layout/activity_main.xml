@@ -70,7 +70,6 @@
         android:textSize="40sp"
         android:text="TEST"/>
 
-</LinearLayout>
 
     <Button
         android:id="@+id/getData"
@@ -95,5 +94,6 @@
         app:layout_constraintTop_toBottomOf="@+id/getData"
 
         />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
 

@@ -8,15 +8,30 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amazonaws.mobileconnectors.cognitoauth.Auth;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserDetails;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool;
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.GetDetailsHandler;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Coach;
+import com.amplifyframework.datastore.generated.model.Student;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
+    String currentLoggedId;
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -35,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
             String password = login_password_input.getText().toString();
             if (!email.isEmpty() && !password.isEmpty()){
                 signIn(email,password);
+
+
             }else {
                 login_email_input.setOutlineAmbientShadowColor(R.color.red);
                 login_password_input.setOutlineAmbientShadowColor(R.color.red);
@@ -55,8 +72,35 @@ public class LoginActivity extends AppCompatActivity {
                 password,
                 success -> {
                     Log.i(TAG, "signIn: worked " + success.toString());
-                    Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(goToMain);
+                    Amplify.API.query(
+                            ModelQuery.list(Student.class , Student.EMAIL.contains(username)),
+                            response -> {
+                                try {
+
+
+                                    if (response.getData().getItems().iterator().next().getRole().equals("student")) {
+                                        Intent studentIntent = new Intent(getApplicationContext(), activity_main_student.class);
+                                        startActivity(studentIntent);
+                                    }
+                                }
+                                catch (NoSuchElementException e){
+                                    Amplify.API.query(
+                                            ModelQuery.list(Coach.class , Coach.EMAIL.contains(username)) ,
+                                            responseCoach -> {
+                                                Log.i(TAG, "signIn: response" + responseCoach.getData());
+                                            } ,
+                                            error2 -> Log.i(TAG, "signIn: QueryFailure")
+                                    );
+                                    Intent anotherIntent = new Intent(getApplicationContext() , activity_main_coach.class);
+                                    startActivity(anotherIntent);
+                                }
+
+                                Log.i(TAG, "signIn: ");
+                                Log.i(TAG, "signIn: response" + response.getData());
+                            },
+                            error -> Log.e("MyAmplifyApp", "Query failure", error)
+
+                    );
                 },
                 error -> Log.e(TAG, "signIn: failed" + error.toString()));
     }
