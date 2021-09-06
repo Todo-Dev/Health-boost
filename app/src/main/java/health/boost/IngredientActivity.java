@@ -1,23 +1,94 @@
 package health.boost;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import health.boost.data.Ingredient;
+import health.boost.adapter.IngredientAdapter;
 import health.boost.data.Nutrient;
 
 public class IngredientActivity extends AppCompatActivity {
-    List<Ingredient> ingredientsList = new ArrayList<>();
+    List<Nutrient> ingredientsList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private EditText searchedCalorie;
+    private JSONArray JSONArr;
+    private ProgressBar progressBar;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient);
+        searchedCalorie = findViewById(R.id.editText_searchedCalories);
+        progressBar = findViewById(R.id.progressbar_search);
+
+        getResults(searchedCalorie.getText().toString());
+
+
+        recyclerView = findViewById(R.id.recycleView_caloriesSearch);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        Button btn = (Button) findViewById(R.id.myButton);
+        btn.setOnClickListener(v -> {
+            // Do something in response to button click
+            getResults(searchedCalorie.getText().toString());
+        });
+
     }
+
+    private void getResults(String calorieNum) {
+        String url = "https://api.spoonacular.com/recipes/findByNutrients?maxCalories=" + calorieNum + "&number=10&apiKey=c957b6816ba048139fbc25a67d2cff33";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        @SuppressLint("NotifyDataSetChanged") JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                response -> {
+                    try {
+                        JSONArr = response;
+                        ingredientsList.clear();
+                        for (int i = 0; i < JSONArr.length(); i++) {
+                            JSONObject jsonObject = JSONArr.getJSONObject(i);
+                            ingredientsList.add(new Nutrient(jsonObject.optString("title"), jsonObject.optString("image"), jsonObject.optInt("calories"),
+                                    jsonObject.getString("protein"), jsonObject.getString("fat"), jsonObject.getString("carbs")));
+                        }
+                        progressBar.setVisibility(View.GONE);
+                        IngredientAdapter myAdapter = new IngredientAdapter(getApplicationContext(), ingredientsList);
+
+                        recyclerView.setAdapter(myAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> Log.i("the res is error:", error.toString())
+        );
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
 }

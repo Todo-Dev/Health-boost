@@ -26,21 +26,37 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/AppTheme"/>
+<!--        <activity-->
+<!--            android:name=".LandingPageActivity"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/AppTheme">-->
+<!--            -->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
-            android:name=".LandingPageActivity"
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".NutrientActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".IngredientActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
-            android:name=".MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -70,7 +70,6 @@
         android:textSize="40sp"
         android:text="TEST"/>
 
-</LinearLayout>
 
 
     <Button
@@ -79,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@color/purple_500"
-        android:text="@string/nutrientactivity"
+        android:text="nutrientactivity"
         android:textColor="#D1C4E9"
         app:layout_constraintEnd_toStartOf="@+id/button_ingredientPage"
         app:layout_constraintHorizontal_bias="0.5"
@@ -92,12 +91,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@color/purple_500"
-        android:text="@string/string_ingredientactivity"
+        android:text="ingredientactivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_nutrientPage"
         app:layout_constraintTop_toTopOf="parent"
 
         />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

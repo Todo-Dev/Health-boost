@@ -122,7 +122,17 @@ public class MainActivity extends AppCompatActivity {
 //                sharedbmi = "severe obesity";
             }
         }
+        Button nutrientIntentButton = MainActivity.this.findViewById(R.id.button_nutrientPage);
+        nutrientIntentButton.setOnClickListener(view -> {
+            Intent newIntent = new Intent(MainActivity.this, NutrientActivity.class);
+            startActivity(newIntent);
+        });
 
+        Button nutrientIngredientButton = MainActivity.this.findViewById(R.id.button_ingredientPage);
+        nutrientIngredientButton.setOnClickListener(view -> {
+            Intent newIntent2 = new Intent(MainActivity.this, IngredientActivity.class);
+            startActivity(newIntent2);
+        });
 
     }
 
