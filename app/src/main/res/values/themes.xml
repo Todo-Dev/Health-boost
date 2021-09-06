@@ -7,4 +7,19 @@
         <item name="colorAccent">@color/teal_200</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="underline"   parent="android:Widget.Holo.Light.TextView">
+        <item name="android:drawableBottom">@drawable/underline</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/emphasis</item>
+    </style>
+    <style name="underlineNone"   parent="android:Widget.Holo.Light.TextView">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
