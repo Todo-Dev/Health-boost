@@ -18,7 +18,6 @@ import java.util.List;
 
 import health.boost.R;
 import health.boost.data.Ingredient;
-import health.boost.data.Nutrient;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
 
@@ -43,16 +42,13 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(IngredientAdapter.MyViewHolder holder, final int position) {
-        holder.nutrientTitle.setText(mData.get(position).getName());
+        holder.ingredientName.setText(mData.get(position).getName());
 
-        holder.nutrientCalories.setText("Calories: " + mData.get(position).getCalories());
-        holder.nutrientProtein.setText("Protein: " + mData.get(position).getProtein());
-        holder.nutrientFat.setText("Fat: " + mData.get(position).getFat());
-        holder.nutrientCarbs.setText("Carbs: " + mData.get(position).getCarbs());
+        holder.nutrientTitle.setText("Calories: " + mData.get(position).getNutrientsTitle());
         if (mData.get(position).getImage().isEmpty()) {
-            holder.imgNutrient.setImageResource(R.drawable.ic_launcher_background); //احتياط
+            holder.imgIngredient.setImageResource(R.drawable.ic_launcher_background); //احتياط
         } else {
-            Picasso.get().load(mData.get(position).getImage()).into(holder.imgNutrient);
+            Picasso.get().load(mData.get(position).getImage()).into(holder.imgIngredient);
         }
     }
 
@@ -64,12 +60,9 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView nutrientTitle;
-        ImageView imgNutrient;
+        ImageView imgIngredient;
 
-        TextView nutrientCalories;
-        TextView nutrientProtein;
-        TextView nutrientFat;
-        TextView nutrientCarbs;
+        TextView ingredientName;
 
 
         CardView cardView;
@@ -77,14 +70,10 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
         public MyViewHolder(View itemView) {
             super(itemView);
             nutrientTitle = itemView.findViewById(R.id.TextView_nutrientTitle);
-            imgNutrient = itemView.findViewById(R.id.imageView_nutrient);
-
-            nutrientCalories = itemView.findViewById(R.id.TextView_nutrientCalories);
-            nutrientProtein = itemView.findViewById(R.id.TextView_nutrientProtein);
-            nutrientFat = itemView.findViewById(R.id.TextView_nutrientFat);
-            nutrientCarbs = itemView.findViewById(R.id.TextView_nutrientCarbs);
+            imgIngredient = itemView.findViewById(R.id.imageView_ingredient);
+            ingredientName = itemView.findViewById(R.id.imageView_ingredientName);
 
             cardView = itemView.findViewById(R.id.cardView_nutrient);
         }
     }
-        }
+}

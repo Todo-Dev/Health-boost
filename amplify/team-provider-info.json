@@ -1,0 +1,20 @@
+{
+  "health": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-health-boost-health-173241-authRole",
+      "UnauthRoleArn": "arn:aws:iam::606650539967:role/amplify-health-boost-health-173241-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::606650539967:role/amplify-health-boost-health-173241-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-health-boost-health-173241-deployment",
+      "UnauthRoleName": "amplify-health-boost-health-173241-unauthRole",
+      "StackName": "amplify-health-boost-health-173241",
+      "StackId": "arn:aws:cloudformation:us-east-2:606650539967:stack/amplify-health-boost-health-173241/4e443b20-0f1f-11ec-8e02-06710422b242",
+      "AmplifyAppId": "dwm6ej8ytrd3v"
+    },
+    "categories": {
+      "auth": {
+        "healthboost8f6bfcf4": {}
+      }
+    }
+  }
+}

@@ -33,7 +33,7 @@ public class Ingredient {
         this.name = name;
     }
 
-    public String getName() {
+    public String getImage() {
         return image;
     }
 
@@ -48,7 +48,6 @@ public class Ingredient {
     public void setNutrientsTitle(int nutrientsTitle) {
         this.nutrientsTitle = nutrientsTitle;
     }
-
 
     @Override
     public String toString() {

@@ -6,4 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".IngredientActivity">
 
+    <Button
+        android:id="@+id/getData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Data"
+        android:textAlignment="center"
+
+        android:textColor="#020202"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

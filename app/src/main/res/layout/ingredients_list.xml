@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView_nutrient"
+    android:id="@+id/cardView_ingredient"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView_nutrient"
+            android:id="@+id/imageView_ingredient"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:background="#2d2d2d"
@@ -29,17 +29,17 @@
             android:contentDescription="TODO" />
 
         <TextView
-            android:id="@+id/TextView_nutrientTitle"
+            android:id="@+id/imageView_ingredientName"
             android:layout_width="match_parent"
             android:layout_height="83dp"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Title"
+            android:text="Name"
             android:textColor="#2d2d2d"
             android:textSize="13sp" />
 
         <TextView
-            android:id="@+id/TextView_nutrientCalories"
+            android:id="@+id/TextView_nutrientTitle"
             android:layout_width="100dp"
             android:layout_height="20dp"
             android:gravity="center"
@@ -47,34 +47,6 @@
             android:textColor="#2d2d2d"
             android:textSize="13sp" />
 
-        <TextView
-            android:id="@+id/TextView_nutrientProtein"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:gravity="center"
-            android:text="Protein"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            />
-        <TextView
-            android:id="@+id/TextView_nutrientFat"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:gravity="center"
-            android:text="Fat"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            />
-
-        <TextView
-            android:id="@+id/TextView_nutrientCarbs"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:gravity="center"
-            android:text="Carbs"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
