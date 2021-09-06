@@ -3,7 +3,7 @@ package health.boost;
 
 import static java.lang.String.format;
 
-import  androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -53,9 +53,7 @@ import health.boost.adapter.NutrientAdapter;
 import health.boost.data.Nutrient;
 
 
-
 public class MainActivity extends AppCompatActivity {
-
 
 
     private static final String TAG = "Main";
@@ -80,21 +78,33 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bmi(weight,height,bmires);
+                bmi(weight, height, bmires);
             }
+        });
+
+        Button nutrientIntentButton = MainActivity.this.findViewById(R.id.button_nutrientPage);
+        nutrientIntentButton.setOnClickListener(view -> {
+            Intent newIntent = new Intent(getApplicationContext(), NutrientActivity.class);
+            startActivity(newIntent);
+        });
+
+        Button nutrientIngredientButton = MainActivity.this.findViewById(R.id.button_ingredientPage);
+        nutrientIngredientButton.setOnClickListener(view -> {
+            Intent newIntent2 = new Intent(getApplicationContext(), IngredientActivity.class);
+            startActivity(newIntent2);
         });
     }
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
-    private void bmi(EditText weight, EditText height,TextView bmires) {
+    private void bmi(EditText weight, EditText height, TextView bmires) {
         if (height.getText().toString().isEmpty() && weight.getText().toString().isEmpty()) {
             Toast.makeText(MainActivity.this, "Both Height and Weight are Mandatory.", Toast.LENGTH_SHORT).show();
         } else {
-            float height1 = Float.parseFloat(height.getText().toString())/100;
+            float height1 = Float.parseFloat(height.getText().toString()) / 100;
             float weight1 = Float.parseFloat(weight.getText().toString());
-            Log.i(TAG, "bmi: "+ height1 + " /" + weight1);
+            Log.i(TAG, "bmi: " + height1 + " /" + weight1);
             float res = weight1 / (height1 * height1);
-            Log.i(TAG, "res: "+ res);
+            Log.i(TAG, "res: " + res);
 
             if (res < 18.5) {
                 bmires.setText("Underweight " + format("%.2f", res));
@@ -122,17 +132,7 @@ public class MainActivity extends AppCompatActivity {
 //                sharedbmi = "severe obesity";
             }
         }
-        Button nutrientIntentButton = MainActivity.this.findViewById(R.id.button_nutrientPage);
-        nutrientIntentButton.setOnClickListener(view -> {
-            Intent newIntent = new Intent(MainActivity.this, NutrientActivity.class);
-            startActivity(newIntent);
-        });
 
-        Button nutrientIngredientButton = MainActivity.this.findViewById(R.id.button_ingredientPage);
-        nutrientIngredientButton.setOnClickListener(view -> {
-            Intent newIntent2 = new Intent(MainActivity.this, IngredientActivity.class);
-            startActivity(newIntent2);
-        });
 
     }
 

@@ -1,0 +1,169 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateCoach {
+  onCreateCoach {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCoach {
+  onUpdateCoach {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCoach {
+  onDeleteCoach {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateStudent {
+  onCreateStudent {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    coachID
+    coach {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateStudent {
+  onUpdateStudent {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    coachID
+    coach {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteStudent {
+  onDeleteStudent {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    coachID
+    coach {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

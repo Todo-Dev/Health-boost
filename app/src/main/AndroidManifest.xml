@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="health.boost">
-    <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,35 +13,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthBoost">
-        <activity android:name=".FoodListActivity"></activity>
+        <activity
+            android:name=".activity_main_coach"
+            android:exported="true" />
+        <activity
+            android:name=".activity_main_student"
+            android:exported="true" />
+        <activity android:name=".FoodListActivity" />
         <activity
             android:name=".VerificationActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
-<!--        <activity-->
-<!--            android:name=".LandingPageActivity"-->
-<!--            android:exported="true"-->
-<!--            android:theme="@style/AppTheme">-->
-<!--            -->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".LandingPageActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme">
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+        </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+             <activity
             android:name=".NutrientActivity"
             android:exported="true"
             android:theme="@style/AppTheme"/>
@@ -49,13 +60,7 @@
         <activity
             android:name=".IngredientActivity"
             android:exported="true"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme"/>
 
     </application>
 
