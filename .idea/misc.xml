@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/Health-boost/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2203125" />
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/Health-boost/app/src/main/res/drawable/ic_cancel.xml" value="0.2203125" />
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/Health-boost/app/src/main/res/drawable/ic_check.xml" value="0.2203125" />
@@ -26,6 +27,12 @@
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/Health-boost/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/Health-boost/app/src/main/res/layout/activity_verification.xml" value="0.25" />
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/Health-boost/app/src/main/res/layout/top_layout.xml" value="0.20416666666666666" />
+
+        <entry key="..\:/Users/noorh/ASAC/ASAC401/Health-boost/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/noorh/ASAC/ASAC401/Health-boost/app/src/main/res/layout/nutrients_list.xml" value="0.29584599797365757" />
+        <entry key="..\:/Users/peter/AndroidStudioProjects/Healthboost/app/src/main/res/layout/activity_bmi.xml" value="0.33" />
+        <entry key="..\:/Users/peter/AndroidStudioProjects/Healthboost/app/src/main/res/layout/activity_main.xml" value="0.14583333333333334" />
+
       </map>
     </option>
   </component>
