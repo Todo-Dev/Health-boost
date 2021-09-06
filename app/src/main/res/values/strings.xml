@@ -2,4 +2,7 @@
     <string name="app_name">Health boost</string>
     <string name="Check">check</string>
     <string name="data">data</string>
+    <string name="ingredientactivity">IngredientActivity</string>
+    <string name="string_ingredientactivity" />
+    <string name="nutrientactivity">NutrientActivity</string>
 </resources>
