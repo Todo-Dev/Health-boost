@@ -26,7 +26,13 @@
         <activity
             android:name=".activity_main_coach"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".activity_main_student"
             android:exported="true" />
@@ -47,20 +53,16 @@
         <activity
             android:name=".LandingPageActivity"
             android:exported="true"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/AppTheme"/>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".IngredientActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

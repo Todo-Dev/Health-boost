@@ -82,11 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 bmi(weight, height, bmires);
             }
         });
-        Button nutrientIngredientButton = MainActivity.this.findViewById(R.id.button_ingredientPage);
-        nutrientIngredientButton.setOnClickListener(view -> {
-            Intent newIntent2 = new Intent(getApplicationContext(), IngredientActivity.class);
-            startActivity(newIntent2);
-        });
+     
     }
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
