@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_coach"
+    app:startDestination="@+id/navigation_home_coach">
+
+    <fragment
+        android:id="@+id/navigation_home_coach"
+        android:name="health.boost.coachUi.home.CoachHomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home_coach" />
+
+    <fragment
+        android:id="@+id/navigation_recipe_coach"
+        android:name="health.boost.coachUi.recipe.RecipeFragment"
+        android:label="@string/title_recipe"
+        tools:layout="@layout/fragment_recipe_coach" />
+
+
+    <fragment
+        android:id="@+id/navigation_Setting_coach"
+        android:name="health.boost.coachUi.setting.SettingFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_setting_coach" />
+</navigation>
