@@ -3,7 +3,6 @@
     package="health.boost">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -14,12 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthBoost">
         <activity
+            android:name=".StudentActivity"
+            android:exported="true"
+            android:label="@string/title_activity_student"
+           />
+        <activity
+            android:name=".CoachActivity"
+            android:exported="true"
+            android:label="@string/title_activity_coach"
+            />
+        <activity
             android:name=".activity_main_coach"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activity_main_student"
             android:exported="true" />
-        <activity android:name=".FoodListActivity" />
+        <activity android:name=".FoodListActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".VerificationActivity"
             android:exported="true"
@@ -35,9 +46,15 @@
         <activity
             android:name=".LandingPageActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme">
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
+        </activity>
+       
+             <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -51,7 +68,6 @@
             android:name=".IngredientActivity"
             android:exported="true"
             android:theme="@style/AppTheme" />
-
     </application>
 
 </manifest>
