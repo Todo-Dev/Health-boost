@@ -24,5 +24,14 @@
     <string name="lastName">lastName</string>
     <string name="Check">check</string>
     <string name="data">data</string>
+    <string name="title_activity_student">StudentActivity</string>
+    <string name="title_activity_coach">CoachActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_recipe">Recipe</string>
+    <string name="title_Coach">Hire Coach</string>
+    <string name="bmi">BMI</string>
+    <string name="setting">Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
