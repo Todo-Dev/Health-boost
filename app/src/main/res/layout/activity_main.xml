@@ -71,29 +71,18 @@
         android:text="TEST"/>
 
 
+
+
     <Button
-        android:id="@+id/getData"
+        android:id="@+id/button_ingredientPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/data"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="@color/purple_500"
+        android:text="ingredient Activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_nutrient"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getData"
 
         />
-
 </LinearLayout>
-
