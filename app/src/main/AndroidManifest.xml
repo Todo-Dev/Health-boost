@@ -21,19 +21,7 @@
             android:name=".CoachActivity"
             android:exported="true"
             android:label="@string/title_activity_coach" />
-        <activity
-            android:name=".activity_main_coach"
-            android:exported="true"
-            android:theme="@style/AppTheme" />
-        <!--        <intent-filter>-->
-        <!--            <action android:name="android.intent.action.MAIN" />-->
-
-        <!--            <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--        </intent-filter>-->
-        <!--    </activity>-->
-        <activity
-            android:name=".activity_main_student"
-            android:exported="true" />
+   
         <activity
             android:name=".FoodListActivity"
             android:theme="@style/AppTheme" />
