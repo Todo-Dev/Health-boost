@@ -106,7 +106,7 @@ public class RecipeFragment extends Fragment {
     private void getSearchedResults(String calorieNum) {
 //&number=10
 //        apiKey=c957b6816ba048139fbc25a67d2cff33
-        String url = "https://api.spoonacular.com/recipes/findByNutrients?maxCalories=" + calorieNum + "&apiKey=0af706a2f4d74bfc8f4d0c9aaf2625d4";
+        String url = "https://api.spoonacular.com/recipes/findByNutrients?maxCalories=" + calorieNum + "&apiKey=c957b6816ba048139fbc25a67d2cff33";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         @SuppressLint("NotifyDataSetChanged") JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET,
