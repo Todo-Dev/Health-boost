@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
-	<name>Health-boost</name>
-=======
-	<name>Health boost</name>
->>>>>>> 018a8041afe65545437118c3646733f1cade8bca
-	<comment>Project Health-boost created by Buildship.</comment>
+	<name>app</name>
+	<comment>Project app created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
 			<arguments>
@@ -16,15 +17,12 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
 	<filteredResources>
 		<filter>
-<<<<<<< HEAD
-			<id>1631019165728</id>
-=======
-			<id>1630935954171</id>
->>>>>>> 018a8041afe65545437118c3646733f1cade8bca
+			<id>1630935954190</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

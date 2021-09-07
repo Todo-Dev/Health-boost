@@ -3,7 +3,6 @@
     package="health.boost">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -54,9 +53,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+       
+             <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+                 />
+
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        <activity-->
+<!--            android:name=".IngredientActivity"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/AppTheme" />-->
     </application>
 
 </manifest>

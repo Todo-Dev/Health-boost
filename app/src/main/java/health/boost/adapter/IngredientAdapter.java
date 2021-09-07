@@ -2,7 +2,6 @@ package health.boost.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,12 @@ import java.util.List;
 import health.boost.R;
 import health.boost.data.Nutrient;
 
-public class NutrientAdapter extends RecyclerView.Adapter<NutrientAdapter.MyViewHolder> {
+public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Nutrient> mData;
 
-    public NutrientAdapter(Context mContext, List<Nutrient> mData) {
+    public IngredientAdapter(Context mContext, List<Nutrient> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -33,18 +32,18 @@ public class NutrientAdapter extends RecyclerView.Adapter<NutrientAdapter.MyView
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public IngredientAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.nutrients_list, parent, false);
-        return new MyViewHolder(view);
+        view = mInflater.inflate(R.layout.ingredients_list, parent, false);
+        return new IngredientAdapter.MyViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.nutrientTitle.setText(mData.get(position).getTitle());
+    public void onBindViewHolder(IngredientAdapter.MyViewHolder holder, final int position) {
 
+        holder.nutrientTitle.setText(mData.get(position).getTitle());
         holder.nutrientCalories.setText("Calories: " + mData.get(position).getCalories());
         holder.nutrientProtein.setText("Protein: " + mData.get(position).getProtein());
         holder.nutrientFat.setText("Fat: " + mData.get(position).getFat());
@@ -54,17 +53,6 @@ public class NutrientAdapter extends RecyclerView.Adapter<NutrientAdapter.MyView
         } else {
             Picasso.get().load(mData.get(position).getImage()).into(holder.imgNutrient);
         }
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(mContext, MainActivity.class);
-////                intent.putExtra("id", mData.get(position).getId());
-////                intent.putExtra("title",mData.get(position).getTitle());
-////                intent.putExtra("img",mData.get(position).getThumbnail());
-////                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                mContext.startActivity(intent);
-//            }
-//        });
     }
 
     @Override
