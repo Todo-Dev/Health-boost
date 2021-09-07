@@ -1,4 +1,38 @@
 # this is an auto generated file. This will be overwritten
+query SyncCoaches(
+  $filter: ModelCoachFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncCoaches(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      students {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query GetCoach($id: ID!) {
   getCoach(id: $id) {
     id
@@ -18,11 +52,18 @@ query GetCoach($id: ID!) {
         phoneNumber
         role
         coachID
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -43,11 +84,61 @@ query ListCoaches(
       role
       students {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncStudents(
+  $filter: ModelStudentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncStudents(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      coachID
+      coach {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetStudent($id: ID!) {
@@ -70,10 +161,17 @@ query GetStudent($id: ID!) {
       role
       students {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -101,12 +199,19 @@ query ListStudents(
         email
         phoneNumber
         role
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
     nextToken
+    startedAt
   }
 }

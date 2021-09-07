@@ -1,5 +1,22 @@
-type Todo @model {
+type Coach @model {
   id: ID!
-  name: String!
-  description: String
+  firstName: String!
+  lastName: String!
+  username:String!
+  email:String!
+  phoneNumber:Int!
+  role:String!
+  students: [Student] @connection(keyName: "myStudent", fields: ["id"])
+}
+
+type Student @model @key(name: "myStudent", fields: ["coachID"]) {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  username:String!
+  email:String!
+  phoneNumber:Int!
+  role:String!
+  coachID: ID
+  coach: Coach @connection(fields: ["coachID"])
 }
