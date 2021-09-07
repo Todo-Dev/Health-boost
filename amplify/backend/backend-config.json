@@ -8,8 +8,8 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "health"
+              "apiKeyExpirationDays": 20,
+              "description": "api key mohiesen"
             }
           },
           "additionalAuthenticationProviders": []
@@ -18,7 +18,7 @@
     }
   },
   "auth": {
-    "healthboost9de62d91": {
+    "healthboost9bc380b0": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -39,6 +39,12 @@
           "SMS"
         ]
       }
+    }
+  },
+  "storage": {
+    "s3bedb7571": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

@@ -71,7 +71,6 @@
         android:text="TEST"/>
 
 
-
     <Button
         android:id="@+id/getData"
         android:layout_width="wrap_content"

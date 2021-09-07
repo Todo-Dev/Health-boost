@@ -20,4 +20,3 @@ type Student @model @key(name: "myStudent", fields: ["coachID"]) {
   coachID: ID
   coach: Coach @connection(fields: ["coachID"])
 }
-
