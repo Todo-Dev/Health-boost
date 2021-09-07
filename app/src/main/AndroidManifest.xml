@@ -66,10 +66,10 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
 
-<!--        <activity-->
-<!--            android:name=".IngredientActivity"-->
-<!--            android:exported="true"-->
-<!--            android:theme="@style/AppTheme" />-->
+        <activity
+            android:name=".IngredientActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
