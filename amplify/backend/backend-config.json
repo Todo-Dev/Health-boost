@@ -8,8 +8,8 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": "healthboostAPI"
+              "apiKeyExpirationDays": 20,
+              "description": "hello"
             }
           },
           "additionalAuthenticationProviders": []

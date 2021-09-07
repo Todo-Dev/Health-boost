@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                     if (response.getData().getItems().iterator().next().getRole().equals("student")) {
-                                        Intent studentIntent = new Intent(getApplicationContext(), activity_main_student.class);
+                                        Intent studentIntent = new Intent(getApplicationContext(), StudentActivity.class);
                                         startActivity(studentIntent);
                                     }
                                 }
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                             } ,
                                             error2 -> Log.i(TAG, "signIn: QueryFailure")
                                     );
-                                    Intent anotherIntent = new Intent(getApplicationContext() , activity_main_coach.class);
+                                    Intent anotherIntent = new Intent(getApplicationContext() , CoachActivity.class);
                                     startActivity(anotherIntent);
                                 }
 
