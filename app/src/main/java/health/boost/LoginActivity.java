@@ -45,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         Button login_submit_button = findViewById(R.id.login_button);
         Button login_to_signup_button = findViewById(R.id.signup_button);
 
+        
+
+
         login_submit_button.setOnClickListener(v -> {
             String email = login_email_input.getText().toString();
             String password = login_password_input.getText().toString();
@@ -73,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 success -> {
                     Log.i(TAG, "signIn: worked " + success.toString());
                     Amplify.API.query(
-                            ModelQuery.list(Student.class , Student.EMAIL.contains(username)),
+                            ModelQuery.list(Student.class, Student.EMAIL.contains(username)),
                             response -> {
                                 try {
 
@@ -82,16 +85,15 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent studentIntent = new Intent(getApplicationContext(), activity_main_student.class);
                                         startActivity(studentIntent);
                                     }
-                                }
-                                catch (NoSuchElementException e){
+                                } catch (NoSuchElementException e) {
                                     Amplify.API.query(
-                                            ModelQuery.list(Coach.class , Coach.EMAIL.contains(username)) ,
+                                            ModelQuery.list(Coach.class, Coach.EMAIL.contains(username)),
                                             responseCoach -> {
                                                 Log.i(TAG, "signIn: response" + responseCoach.getData());
-                                            } ,
+                                            },
                                             error2 -> Log.i(TAG, "signIn: QueryFailure")
                                     );
-                                    Intent anotherIntent = new Intent(getApplicationContext() , activity_main_coach.class);
+                                    Intent anotherIntent = new Intent(getApplicationContext(), activity_main_coach.class);
                                     startActivity(anotherIntent);
                                 }
 
@@ -103,5 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                     );
                 },
                 error -> Log.e(TAG, "signIn: failed" + error.toString()));
+
+
     }
+
+
 }

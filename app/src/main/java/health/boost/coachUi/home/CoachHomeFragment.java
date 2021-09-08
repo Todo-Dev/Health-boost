@@ -35,15 +35,15 @@ public class CoachHomeFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        VideoView video = (VideoView) root.findViewById(R.id.videoView);
-        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                video.requestFocus();
-                video.start();
-            }
-        });
-        video.setVideoURI(Uri.parse("https://cdn.videvo.net/videvo_files/video/free/2014-06/large_watermarked/Oranges_3Videvo_preview.mp4"));
+//        VideoView video = (VideoView) root.findViewById(R.id.videoView);
+//        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mp) {
+//                video.requestFocus();
+//                video.start();
+//            }
+//        });
+//        video.setVideoURI(Uri.parse("https://cdn.videvo.net/videvo_files/video/free/2014-06/large_watermarked/Oranges_3Videvo_preview.mp4"));
 
 
 
