@@ -7,30 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".studentUi.home.StudentHomeFragment">
 
-<!--    <TextView-->
-<!--        android:id="@+id/text_home"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="20sp"-->
-<!--        android:text="home"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <ImageView-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:src="@drawable/ic_logo"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/text_home"-->
-<!--        android:contentDescription="TODO" />-->
 
 
     <LinearLayout
@@ -55,38 +31,5 @@
             android:textColor="#2d2d2d"
             android:textSize="13sp" />
 
-        <TextView
-            android:id="@+id/textView_nutrientCalories"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Calories"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/textView_nutrientProtein"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Protein"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            />
-        <TextView
-            android:id="@+id/textView_nutrientFat"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Fat"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            />
-
-        <TextView
-            android:id="@+id/textView_nutrientCarbs"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Carbs"
-            android:textColor="#2d2d2d"
-            android:textSize="13sp"
-            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

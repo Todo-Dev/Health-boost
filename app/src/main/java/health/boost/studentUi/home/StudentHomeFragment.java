@@ -42,10 +42,7 @@ public class StudentHomeFragment extends Fragment {
     private FragmentHomeStudentBinding binding;
     private ImageView imageViewNutrient;
     private TextView textViewNutrientTitle;
-    private TextView textViewNutrientCalories;
-    private TextView textViewNutrientProtein;
-    private TextView textViewNutrientFat;
-    private TextView textViewNutrientCarbs;
+
     private JSONArray JSONArr;
 //    List<Nutrient> ingredientsList = new ArrayList<>();
 
@@ -61,10 +58,7 @@ public class StudentHomeFragment extends Fragment {
         imageViewNutrient = binding.imageViewNutrient;
         textViewNutrientTitle = binding.textViewNutrientTitle;
 
-        textViewNutrientCalories = root.findViewById(R.id.textView_nutrientCalories);
-        textViewNutrientProtein = root.findViewById(R.id.textView_nutrientProtein);
-        textViewNutrientFat = root.findViewById(R.id.textView_nutrientFat);
-        textViewNutrientCarbs = root.findViewById(R.id.textView_nutrientCarbs);
+
         getResults();
 
 //        final TextView textView = binding.textHome;
