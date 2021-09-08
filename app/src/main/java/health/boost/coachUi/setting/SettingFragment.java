@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Coach;
 
 import health.boost.LoginActivity;
 import health.boost.R;
@@ -51,6 +53,10 @@ public class SettingFragment extends Fragment {
                 AlertDialog alert11 = builder.create();
                 alert11.show();
             }
+
+
+
+
         });
 
 
