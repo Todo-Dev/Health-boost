@@ -35,6 +35,7 @@ public class CoachHomeFragment extends Fragment {
         View root = binding.getRoot();
 
 
+
 //        VideoView video = (VideoView) root.findViewById(R.id.videoView);
 //        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 //            @Override
