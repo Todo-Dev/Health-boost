@@ -9,6 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,10 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +38,18 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Student;
 
 import health.boost.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import health.boost.R;
+import health.boost.data.Nutrient;
 import health.boost.databinding.FragmentHomeStudentBinding;
 
 public class StudentHomeFragment extends Fragment {
@@ -41,6 +60,12 @@ public class StudentHomeFragment extends Fragment {
     Student currentStudent;
     Handler handler;
     private static final int CALL_PERMISSION_REQUEST_CODE = 1235;
+    private ImageView imageViewNutrient;
+    private TextView textViewNutrientTitle;
+
+    private JSONArray JSONArr;
+
+
 
     @SuppressLint({"SetTextI18n", "WrongConstant"})
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -83,16 +108,61 @@ public class StudentHomeFragment extends Fragment {
             String phoneNumber = coachPhone.getText().toString();
             call(phoneNumber);
         });
+        imageViewNutrient = binding.imageViewNutrient;
+        textViewNutrientTitle = binding.textViewNutrientTitle;
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        getResults();
+
+        VideoView videoView =binding.videoView;
+        videoView.setVideoPath("https://cdn.videvo.net/videvo_files/video/free/2014-06/large_watermarked/Oranges_3Videvo_preview.mp4");
+
+        MediaController mediaController = new MediaController(getContext());
+        //link mediaController to videoView
+        mediaController.setAnchorView(videoView);
+        //allow mediaController to control our videoView
+        videoView.setMediaController(mediaController);
+        videoView.start();
+
+
+//        final TextView textView = binding.textHome;
+//        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
+
+    private void getResults() {
+        String url = "https://api.spoonacular.com/recipes/random?number=1&instructionsRequired=true&apiKey=c957b6816ba048139fbc25a67d2cff33";
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                response -> {
+                    try {
+                        JSONArr = (JSONArray) response.get("recipes");
+                        JSONObject jsonObject = JSONArr.getJSONObject(0);
+                        Nutrient nutrient = new Nutrient(jsonObject.optString("title"), jsonObject.optString("image"));
+                        textViewNutrientTitle.setText(nutrient.getTitle());
+                        Picasso.get().load(nutrient.getImage()).into(imageViewNutrient);
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+                    Log.i("the res is error:", error.toString());
+                }
+        );
+        requestQueue.add(jsonObjectRequest);
+    }
+
 
     @Override
     public void onDestroyView() {

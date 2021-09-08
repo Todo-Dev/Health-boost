@@ -35,7 +35,7 @@ public final class Student implements Model {
   private final @ModelField(targetType="String") String lastName;
   private final @ModelField(targetType="String") String username;
   private final @ModelField(targetType="String") String email;
-  private final @ModelField(targetType="Float") Double phoneNumber;
+  private final @ModelField(targetType="Int") Integer phoneNumber;
   private final @ModelField(targetType="String") String role;
   private final @ModelField(targetType="Trainer") @BelongsTo(targetName = "coachId", type = Trainer.class) Trainer trainer;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
@@ -60,7 +60,7 @@ public final class Student implements Model {
       return email;
   }
   
-  public Double getPhoneNumber() {
+  public Integer getPhoneNumber() {
       return phoneNumber;
   }
   
@@ -80,7 +80,7 @@ public final class Student implements Model {
       return updatedAt;
   }
   
-  private Student(String id, String firstName, String lastName, String username, String email, Double phoneNumber, String role, Trainer trainer) {
+  private Student(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Trainer trainer) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -199,7 +199,7 @@ public final class Student implements Model {
     BuildStep lastName(String lastName);
     BuildStep username(String username);
     BuildStep email(String email);
-    BuildStep phoneNumber(Double phoneNumber);
+    BuildStep phoneNumber(Integer phoneNumber);
     BuildStep role(String role);
     BuildStep trainer(Trainer trainer);
   }
@@ -211,7 +211,7 @@ public final class Student implements Model {
     private String lastName;
     private String username;
     private String email;
-    private Double phoneNumber;
+    private Integer phoneNumber;
     private String role;
     private Trainer trainer;
     @Override
@@ -254,7 +254,7 @@ public final class Student implements Model {
     }
     
     @Override
-     public BuildStep phoneNumber(Double phoneNumber) {
+     public BuildStep phoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -283,7 +283,7 @@ public final class Student implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Double phoneNumber, String role, Trainer trainer) {
+    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Trainer trainer) {
       super.id(id);
       super.firstName(firstName)
         .lastName(lastName)
@@ -315,7 +315,7 @@ public final class Student implements Model {
     }
     
     @Override
-     public CopyOfBuilder phoneNumber(Double phoneNumber) {
+     public CopyOfBuilder phoneNumber(Integer phoneNumber) {
       return (CopyOfBuilder) super.phoneNumber(phoneNumber);
     }
     

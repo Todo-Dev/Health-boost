@@ -39,7 +39,7 @@ public class VerificationActivity extends AppCompatActivity {
         String password = intent.getExtras().getString("password", "");
         String email = intent.getExtras().getString("email", "");
         String role = intent.getExtras().getString("role", "");
-        Double phoneNumber = Double.parseDouble(intent.getExtras().getString("phoneNumber", ""));
+        String phoneNumber = intent.getExtras().getString("phoneNumber", "");
         String firstName = intent.getExtras().getString("firstName", "");
         String lastName = intent.getExtras().getString("lastName", "");
 
@@ -57,7 +57,7 @@ public class VerificationActivity extends AppCompatActivity {
                        .lastName(lastName)
                        .username(username)
                        .email(email)
-                       .phoneNumber(phoneNumber)
+                       .phoneNumber(Integer.parseInt(phoneNumber))
                        .role(role)
                        .trainer(coach)
                        .build();
@@ -69,7 +69,7 @@ public class VerificationActivity extends AppCompatActivity {
                        .lastName(lastName)
                        .username(username)
                        .email(email)
-                       .phoneNumber(phoneNumber)
+                       .phoneNumber(Integer.parseInt(phoneNumber))
                        .role(role)
                        .build();
                saveTrainerToAPI(coach);

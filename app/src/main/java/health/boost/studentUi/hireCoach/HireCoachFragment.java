@@ -105,6 +105,7 @@ public class HireCoachFragment extends Fragment {
                         .build();
                 Log.i(TAG, "onHire: new student" + student);
                 hireCoach(student);
+                Toast.makeText(getContext(), "Coach has been hired", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -192,11 +193,9 @@ public class HireCoachFragment extends Fragment {
         Amplify.API.mutate(ModelMutation.update(student),
                 res-> {
             Log.i(TAG, "hireCoach: is updated "+ res);
-                    Toast.makeText(getContext(), "Coach has been hired", Toast.LENGTH_SHORT).show();
                 },
                 err-> {
             Log.i(TAG, "hireCoach: failed to updated" + err);
-                    Toast.makeText(getContext(), "something wrong happened", Toast.LENGTH_SHORT).show();
                 }
                 );
     }

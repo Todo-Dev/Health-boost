@@ -1,5 +1,6 @@
 package health.boost;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -26,6 +27,8 @@ public class CoachActivity extends AppCompatActivity {
 
         binding = ActivityCoachBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view_coach);
         // Passing each menu ID as a set of Ids because each

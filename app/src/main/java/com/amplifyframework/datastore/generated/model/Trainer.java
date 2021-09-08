@@ -33,7 +33,7 @@ public final class Trainer implements Model {
   private final @ModelField(targetType="String") String lastName;
   private final @ModelField(targetType="String") String username;
   private final @ModelField(targetType="String") String email;
-  private final @ModelField(targetType="Float") Double phoneNumber;
+  private final @ModelField(targetType="Int") Integer phoneNumber;
   private final @ModelField(targetType="String") String role;
   private final @ModelField(targetType="Student") @HasMany(associatedWith = "trainer", type = Student.class) List<Student> students = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
@@ -58,7 +58,7 @@ public final class Trainer implements Model {
       return email;
   }
   
-  public Double getPhoneNumber() {
+  public Integer getPhoneNumber() {
       return phoneNumber;
   }
   
@@ -78,7 +78,7 @@ public final class Trainer implements Model {
       return updatedAt;
   }
   
-  private Trainer(String id, String firstName, String lastName, String username, String email, Double phoneNumber, String role) {
+  private Trainer(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -191,7 +191,7 @@ public final class Trainer implements Model {
     BuildStep lastName(String lastName);
     BuildStep username(String username);
     BuildStep email(String email);
-    BuildStep phoneNumber(Double phoneNumber);
+    BuildStep phoneNumber(Integer phoneNumber);
     BuildStep role(String role);
   }
   
@@ -202,7 +202,7 @@ public final class Trainer implements Model {
     private String lastName;
     private String username;
     private String email;
-    private Double phoneNumber;
+    private Integer phoneNumber;
     private String role;
     @Override
      public Trainer build() {
@@ -243,7 +243,7 @@ public final class Trainer implements Model {
     }
     
     @Override
-     public BuildStep phoneNumber(Double phoneNumber) {
+     public BuildStep phoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -266,7 +266,7 @@ public final class Trainer implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Double phoneNumber, String role) {
+    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role) {
       super.id(id);
       super.firstName(firstName)
         .lastName(lastName)
@@ -297,7 +297,7 @@ public final class Trainer implements Model {
     }
     
     @Override
-     public CopyOfBuilder phoneNumber(Double phoneNumber) {
+     public CopyOfBuilder phoneNumber(Integer phoneNumber) {
       return (CopyOfBuilder) super.phoneNumber(phoneNumber);
     }
     
