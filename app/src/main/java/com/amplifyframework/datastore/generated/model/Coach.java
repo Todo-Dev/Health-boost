@@ -33,7 +33,7 @@ public final class Coach implements Model {
   private final @ModelField(targetType="String", isRequired = true) String lastName;
   private final @ModelField(targetType="String", isRequired = true) String username;
   private final @ModelField(targetType="String", isRequired = true) String email;
-  private final @ModelField(targetType="Int", isRequired = true) Integer phoneNumber;
+  private final @ModelField(targetType="Float", isRequired = true) Double phoneNumber;
   private final @ModelField(targetType="String", isRequired = true) String role;
   private final @ModelField(targetType="Student") @HasMany(associatedWith = "coach", type = Student.class) List<Student> students = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
@@ -58,7 +58,7 @@ public final class Coach implements Model {
       return email;
   }
   
-  public Integer getPhoneNumber() {
+  public Double getPhoneNumber() {
       return phoneNumber;
   }
   
@@ -78,7 +78,7 @@ public final class Coach implements Model {
       return updatedAt;
   }
   
-  private Coach(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role) {
+  private Coach(String id, String firstName, String lastName, String username, String email, Double phoneNumber, String role) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -205,7 +205,7 @@ public final class Coach implements Model {
   
 
   public interface PhoneNumberStep {
-    RoleStep phoneNumber(Integer phoneNumber);
+    RoleStep phoneNumber(Double phoneNumber);
   }
   
 
@@ -226,7 +226,7 @@ public final class Coach implements Model {
     private String lastName;
     private String username;
     private String email;
-    private Integer phoneNumber;
+    private Double phoneNumber;
     private String role;
     @Override
      public Coach build() {
@@ -271,7 +271,7 @@ public final class Coach implements Model {
     }
     
     @Override
-     public RoleStep phoneNumber(Integer phoneNumber) {
+     public RoleStep phoneNumber(Double phoneNumber) {
         Objects.requireNonNull(phoneNumber);
         this.phoneNumber = phoneNumber;
         return this;
@@ -285,29 +285,18 @@ public final class Coach implements Model {
     }
     
     /** 
-     * WARNING: Do not set ID when creating a new object. Leave this blank and one will be auto generated for you.
-     * This should only be set when referring to an already existing object.
      * @param id id
      * @return Current Builder instance, for fluent method chaining
-     * @throws IllegalArgumentException Checks that ID is in the proper format
      */
-    public BuildStep id(String id) throws IllegalArgumentException {
+    public BuildStep id(String id) {
         this.id = id;
-        
-        try {
-            UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
-        } catch (Exception exception) {
-          throw new IllegalArgumentException("Model IDs must be unique in the format of UUID.",
-                    exception);
-        }
-        
         return this;
     }
   }
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role) {
+    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Double phoneNumber, String role) {
       super.id(id);
       super.firstName(firstName)
         .lastName(lastName)
@@ -338,7 +327,7 @@ public final class Coach implements Model {
     }
     
     @Override
-     public CopyOfBuilder phoneNumber(Integer phoneNumber) {
+     public CopyOfBuilder phoneNumber(Double phoneNumber) {
       return (CopyOfBuilder) super.phoneNumber(phoneNumber);
     }
     

@@ -28,6 +28,8 @@ public final class Student implements Model {
   public static final QueryField USERNAME = field("Student", "username");
   public static final QueryField EMAIL = field("Student", "email");
   public static final QueryField PHONE_NUMBER = field("Student", "phoneNumber");
+  public static final QueryField WEIGHT = field("Student", "weight");
+  public static final QueryField HEIGHT = field("Student", "height");
   public static final QueryField ROLE = field("Student", "role");
   public static final QueryField COACH = field("Student", "coachID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
@@ -35,7 +37,9 @@ public final class Student implements Model {
   private final @ModelField(targetType="String", isRequired = true) String lastName;
   private final @ModelField(targetType="String", isRequired = true) String username;
   private final @ModelField(targetType="String", isRequired = true) String email;
-  private final @ModelField(targetType="Int", isRequired = true) Integer phoneNumber;
+  private final @ModelField(targetType="Float", isRequired = true) Double phoneNumber;
+  private final @ModelField(targetType="Float") Double weight;
+  private final @ModelField(targetType="Float") Double height;
   private final @ModelField(targetType="String", isRequired = true) String role;
   private final @ModelField(targetType="Coach") @BelongsTo(targetName = "coachID", type = Coach.class) Coach coach;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
@@ -60,8 +64,16 @@ public final class Student implements Model {
       return email;
   }
   
-  public Integer getPhoneNumber() {
+  public Double getPhoneNumber() {
       return phoneNumber;
+  }
+  
+  public Double getWeight() {
+      return weight;
+  }
+  
+  public Double getHeight() {
+      return height;
   }
   
   public String getRole() {
@@ -80,13 +92,15 @@ public final class Student implements Model {
       return updatedAt;
   }
   
-  private Student(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Coach coach) {
+  private Student(String id, String firstName, String lastName, String username, String email, Double phoneNumber, Double weight, Double height, String role, Coach coach) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
     this.email = email;
     this.phoneNumber = phoneNumber;
+    this.weight = weight;
+    this.height = height;
     this.role = role;
     this.coach = coach;
   }
@@ -105,6 +119,8 @@ public final class Student implements Model {
               ObjectsCompat.equals(getUsername(), student.getUsername()) &&
               ObjectsCompat.equals(getEmail(), student.getEmail()) &&
               ObjectsCompat.equals(getPhoneNumber(), student.getPhoneNumber()) &&
+              ObjectsCompat.equals(getWeight(), student.getWeight()) &&
+              ObjectsCompat.equals(getHeight(), student.getHeight()) &&
               ObjectsCompat.equals(getRole(), student.getRole()) &&
               ObjectsCompat.equals(getCoach(), student.getCoach()) &&
               ObjectsCompat.equals(getCreatedAt(), student.getCreatedAt()) &&
@@ -121,6 +137,8 @@ public final class Student implements Model {
       .append(getUsername())
       .append(getEmail())
       .append(getPhoneNumber())
+      .append(getWeight())
+      .append(getHeight())
       .append(getRole())
       .append(getCoach())
       .append(getCreatedAt())
@@ -139,6 +157,8 @@ public final class Student implements Model {
       .append("username=" + String.valueOf(getUsername()) + ", ")
       .append("email=" + String.valueOf(getEmail()) + ", ")
       .append("phoneNumber=" + String.valueOf(getPhoneNumber()) + ", ")
+      .append("weight=" + String.valueOf(getWeight()) + ", ")
+      .append("height=" + String.valueOf(getHeight()) + ", ")
       .append("role=" + String.valueOf(getRole()) + ", ")
       .append("coach=" + String.valueOf(getCoach()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
@@ -178,6 +198,8 @@ public final class Student implements Model {
       null,
       null,
       null,
+      null,
+      null,
       null
     );
   }
@@ -189,6 +211,8 @@ public final class Student implements Model {
       username,
       email,
       phoneNumber,
+      weight,
+      height,
       role,
       coach);
   }
@@ -213,7 +237,7 @@ public final class Student implements Model {
   
 
   public interface PhoneNumberStep {
-    RoleStep phoneNumber(Integer phoneNumber);
+    RoleStep phoneNumber(Double phoneNumber);
   }
   
 
@@ -225,6 +249,8 @@ public final class Student implements Model {
   public interface BuildStep {
     Student build();
     BuildStep id(String id) throws IllegalArgumentException;
+    BuildStep weight(Double weight);
+    BuildStep height(Double height);
     BuildStep coach(Coach coach);
   }
   
@@ -235,8 +261,10 @@ public final class Student implements Model {
     private String lastName;
     private String username;
     private String email;
-    private Integer phoneNumber;
+    private Double phoneNumber;
     private String role;
+    private Double weight;
+    private Double height;
     private Coach coach;
     @Override
      public Student build() {
@@ -249,6 +277,8 @@ public final class Student implements Model {
           username,
           email,
           phoneNumber,
+          weight,
+          height,
           role,
           coach);
     }
@@ -282,7 +312,7 @@ public final class Student implements Model {
     }
     
     @Override
-     public RoleStep phoneNumber(Integer phoneNumber) {
+     public RoleStep phoneNumber(Double phoneNumber) {
         Objects.requireNonNull(phoneNumber);
         this.phoneNumber = phoneNumber;
         return this;
@@ -296,35 +326,36 @@ public final class Student implements Model {
     }
     
     @Override
+     public BuildStep weight(Double weight) {
+        this.weight = weight;
+        return this;
+    }
+    
+    @Override
+     public BuildStep height(Double height) {
+        this.height = height;
+        return this;
+    }
+    
+    @Override
      public BuildStep coach(Coach coach) {
         this.coach = coach;
         return this;
     }
     
     /** 
-     * WARNING: Do not set ID when creating a new object. Leave this blank and one will be auto generated for you.
-     * This should only be set when referring to an already existing object.
      * @param id id
      * @return Current Builder instance, for fluent method chaining
-     * @throws IllegalArgumentException Checks that ID is in the proper format
      */
-    public BuildStep id(String id) throws IllegalArgumentException {
+    public BuildStep id(String id) {
         this.id = id;
-        
-        try {
-            UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
-        } catch (Exception exception) {
-          throw new IllegalArgumentException("Model IDs must be unique in the format of UUID.",
-                    exception);
-        }
-        
         return this;
     }
   }
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Coach coach) {
+    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Double phoneNumber, Double weight, Double height, String role, Coach coach) {
       super.id(id);
       super.firstName(firstName)
         .lastName(lastName)
@@ -332,6 +363,8 @@ public final class Student implements Model {
         .email(email)
         .phoneNumber(phoneNumber)
         .role(role)
+        .weight(weight)
+        .height(height)
         .coach(coach);
     }
     
@@ -356,13 +389,23 @@ public final class Student implements Model {
     }
     
     @Override
-     public CopyOfBuilder phoneNumber(Integer phoneNumber) {
+     public CopyOfBuilder phoneNumber(Double phoneNumber) {
       return (CopyOfBuilder) super.phoneNumber(phoneNumber);
     }
     
     @Override
      public CopyOfBuilder role(String role) {
       return (CopyOfBuilder) super.role(role);
+    }
+    
+    @Override
+     public CopyOfBuilder weight(Double weight) {
+      return (CopyOfBuilder) super.weight(weight);
+    }
+    
+    @Override
+     public CopyOfBuilder height(Double height) {
+      return (CopyOfBuilder) super.height(height);
     }
     
     @Override

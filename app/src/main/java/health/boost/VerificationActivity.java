@@ -55,7 +55,7 @@ public class VerificationActivity extends AppCompatActivity {
                        .lastName(lastName)
                        .username(username)
                        .email(email)
-                       .phoneNumber(phoneNumber)
+                       .phoneNumber((double) phoneNumber)
                        .role(role)
                        .coach(coach)
                        .build();
@@ -66,7 +66,7 @@ public class VerificationActivity extends AppCompatActivity {
                        .lastName(lastName)
                        .username(username)
                        .email(email)
-                       .phoneNumber(phoneNumber)
+                       .phoneNumber((double) phoneNumber)
                        .role(role)
                        .build();
                saveCoachToAPI(coach);
