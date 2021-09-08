@@ -10,6 +10,11 @@
       "StackName": "amplify-healthboost-dev-160226",
       "StackId": "arn:aws:cloudformation:us-east-1:606650539967:stack/amplify-healthboost-dev-160226/0702b930-10a5-11ec-bda1-0a78092beb51",
       "AmplifyAppId": "d2nlc0gf327jde"
+    },
+    "categories": {
+      "auth": {
+        "healthboostd486fbce": {}
+      }
     }
   }
 }
