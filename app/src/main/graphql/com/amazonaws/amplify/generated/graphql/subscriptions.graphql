@@ -8,23 +8,6 @@ subscription OnCreateCoach {
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        weight
-        height
-        role
-        coachID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
     createdAt
     updatedAt
   }
@@ -38,29 +21,25 @@ subscription OnUpdateCoach {
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        weight
-        height
-        role
-        coachID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
     createdAt
     updatedAt
   }
 }
 subscription OnDeleteCoach {
   onDeleteCoach {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTrainer {
+  onCreateTrainer {
     id
     firstName
     lastName
@@ -79,7 +58,67 @@ subscription OnDeleteCoach {
         weight
         height
         role
-        coachID
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTrainer {
+  onUpdateTrainer {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        weight
+        height
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTrainer {
+  onDeleteTrainer {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        weight
+        height
+        role
+        coachId
         createdAt
         updatedAt
       }
@@ -100,8 +139,8 @@ subscription OnCreateStudent {
     weight
     height
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -130,8 +169,8 @@ subscription OnUpdateStudent {
     weight
     height
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -160,8 +199,8 @@ subscription OnDeleteStudent {
     weight
     height
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName

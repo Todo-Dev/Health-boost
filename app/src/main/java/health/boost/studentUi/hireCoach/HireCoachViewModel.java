@@ -10,7 +10,6 @@ public class HireCoachViewModel extends ViewModel {
 
     public HireCoachViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is hire coach fragment");
     }
 
     public LiveData<String> getText() {

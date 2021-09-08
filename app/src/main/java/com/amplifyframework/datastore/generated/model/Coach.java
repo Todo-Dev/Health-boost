@@ -1,6 +1,5 @@
 package com.amplifyframework.datastore.generated.model;
 
-import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.temporal.Temporal;
 
 import java.util.List;
@@ -29,6 +28,7 @@ public final class Coach implements Model {
   public static final QueryField PHONE_NUMBER = field("Coach", "phoneNumber");
   public static final QueryField ROLE = field("Coach", "role");
   private final @ModelField(targetType="ID", isRequired = true) String id;
+<<<<<<< HEAD
   private final @ModelField(targetType="String", isRequired = true) String firstName;
   private final @ModelField(targetType="String", isRequired = true) String lastName;
   private final @ModelField(targetType="String", isRequired = true) String username;
@@ -36,6 +36,14 @@ public final class Coach implements Model {
   private final @ModelField(targetType="Float", isRequired = true) Double phoneNumber;
   private final @ModelField(targetType="String", isRequired = true) String role;
   private final @ModelField(targetType="Student") @HasMany(associatedWith = "coach", type = Student.class) List<Student> students = null;
+=======
+  private final @ModelField(targetType="String") String firstName;
+  private final @ModelField(targetType="String") String lastName;
+  private final @ModelField(targetType="String") String username;
+  private final @ModelField(targetType="String") String email;
+  private final @ModelField(targetType="Float") Double phoneNumber;
+  private final @ModelField(targetType="String") String role;
+>>>>>>> main
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -64,10 +72,6 @@ public final class Coach implements Model {
   
   public String getRole() {
       return role;
-  }
-  
-  public List<Student> getStudents() {
-      return students;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -141,7 +145,7 @@ public final class Coach implements Model {
       .toString();
   }
   
-  public static FirstNameStep builder() {
+  public static BuildStep builder() {
       return new Builder();
   }
   
@@ -184,6 +188,7 @@ public final class Coach implements Model {
       phoneNumber,
       role);
   }
+<<<<<<< HEAD
   public interface FirstNameStep {
     LastNameStep firstName(String firstName);
   }
@@ -214,13 +219,21 @@ public final class Coach implements Model {
   }
   
 
+=======
+>>>>>>> main
   public interface BuildStep {
     Coach build();
     BuildStep id(String id) throws IllegalArgumentException;
+    BuildStep firstName(String firstName);
+    BuildStep lastName(String lastName);
+    BuildStep username(String username);
+    BuildStep email(String email);
+    BuildStep phoneNumber(Double phoneNumber);
+    BuildStep role(String role);
   }
   
 
-  public static class Builder implements FirstNameStep, LastNameStep, UsernameStep, EmailStep, PhoneNumberStep, RoleStep, BuildStep {
+  public static class Builder implements BuildStep {
     private String id;
     private String firstName;
     private String lastName;
@@ -243,43 +256,42 @@ public final class Coach implements Model {
     }
     
     @Override
-     public LastNameStep firstName(String firstName) {
-        Objects.requireNonNull(firstName);
+     public BuildStep firstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
     
     @Override
-     public UsernameStep lastName(String lastName) {
-        Objects.requireNonNull(lastName);
+     public BuildStep lastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
     
     @Override
-     public EmailStep username(String username) {
-        Objects.requireNonNull(username);
+     public BuildStep username(String username) {
         this.username = username;
         return this;
     }
     
     @Override
-     public PhoneNumberStep email(String email) {
-        Objects.requireNonNull(email);
+     public BuildStep email(String email) {
         this.email = email;
         return this;
     }
     
     @Override
+<<<<<<< HEAD
      public RoleStep phoneNumber(Double phoneNumber) {
         Objects.requireNonNull(phoneNumber);
+=======
+     public BuildStep phoneNumber(Double phoneNumber) {
+>>>>>>> main
         this.phoneNumber = phoneNumber;
         return this;
     }
     
     @Override
      public BuildStep role(String role) {
-        Objects.requireNonNull(role);
         this.role = role;
         return this;
     }

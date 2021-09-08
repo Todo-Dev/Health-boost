@@ -76,12 +76,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 //
+<<<<<<< HEAD
 
         Button nutrientIngredientButton = MainActivity.this.findViewById(R.id.button_ingredientPage);
         nutrientIngredientButton.setOnClickListener(view -> {
             Intent newIntent2 = new Intent(getApplicationContext(), IngredientActivity.class);
             startActivity(newIntent2);
         });
+=======
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bmi(weight, height, bmires);
+            }
+        });
+     
+>>>>>>> main
     }
 
 
