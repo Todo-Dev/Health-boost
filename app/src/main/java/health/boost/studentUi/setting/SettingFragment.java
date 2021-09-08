@@ -1,8 +1,13 @@
 package health.boost.studentUi.setting;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +21,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Student;
 
 import health.boost.LoginActivity;
 import health.boost.R;
@@ -26,14 +33,32 @@ public class SettingFragment extends Fragment {
     private static final String TAG = "setting";
     private SettingViewModel settingViewModel;
     private FragmentSettingStudentBinding binding;
-
+    Handler handler;
+    Student currentStudent;
+    @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         settingViewModel =
                 new ViewModelProvider(this).get(SettingViewModel.class);
 
+
         binding = FragmentSettingStudentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        getCurrentStudent();
+        TextView email=root.findViewById(R.id.studentEmailEditing);
+        TextView username=root.findViewById(R.id.studentUsernameEditing);
+        TextView phonenumber=root.findViewById(R.id.studentPhonenumberEditing);
+
+        handler=new Handler(Looper.getMainLooper(),msg -> {
+            email.setText(currentStudent.getEmail());
+            username.setText(currentStudent.getUsername());
+            phonenumber.setText(currentStudent.getPhoneNumber().toString());
+
+            return true;
+        });
+
+
 
         Button button = root.findViewById(R.id.buttonLogout);
         button.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +107,21 @@ public class SettingFragment extends Fragment {
                 error -> Log.e("AuthQuickstart", error.toString())
         );
     }
+
+    public void getCurrentStudent(){
+        Amplify.API.query(ModelQuery.list(Student.class,Student.EMAIL.contains(Amplify.Auth.getCurrentUser().getUsername())),
+                res-> {
+                    Log.i(TAG, "getCurrentStudent: res "+ res);
+                    currentStudent=res.getData().getItems().iterator().next();
+                    Log.i(TAG, "currentStudent is : " + currentStudent);
+                    handler.sendEmptyMessage(1);
+                },
+                err->{
+                    Log.i(TAG, "getCurrentStudent: err " +err.toString());
+                });
+    }
+
+
 
 }
 

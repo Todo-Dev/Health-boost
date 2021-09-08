@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +35,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     String currentLoggedId;
 
+
+ ;
+
     @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -45,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         Button login_submit_button = findViewById(R.id.login_button);
         Button login_to_signup_button = findViewById(R.id.signup_button);
 
-        
+
 
 
         login_submit_button.setOnClickListener(v -> {
@@ -53,6 +58,11 @@ public class LoginActivity extends AppCompatActivity {
             String password = login_password_input.getText().toString();
             if (!email.isEmpty() && !password.isEmpty()){
                 signIn(email,password);
+
+
+//                preferenceEditor.putString("email", email);
+//                preferenceEditor.apply();
+
 
 
             }else {
@@ -81,9 +91,17 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
 
 
+
                                     if (response.getData().getItems().iterator().next().getRole().equals("student")) {
+
                                         Intent studentIntent = new Intent(getApplicationContext(), StudentActivity.class);
+
+
                                         startActivity(studentIntent);
+
+
+
+
                                     }
                                 } catch (NoSuchElementException e) {
                                     Amplify.API.query(
@@ -108,6 +126,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+    public static void  saveDataToAmplify(String username,String firstName ,String lastName,Integer phoneNumber,String email,String role){
+       Coach item =Coach.builder().firstName(firstName).lastName(lastName).username(username).email(email).phoneNumber(phoneNumber).role(role).build();
 
+        Amplify.DataStore.save(item,
+                success -> Log.i("Tutorial", "Saved item: " + success.item().toString()),
+                error -> Log.e("Tutorial", "Could not save item to DataStore", error)
+        );
+
+    }
 
 }

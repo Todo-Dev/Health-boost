@@ -2,12 +2,15 @@ package health.boost.coachUi.setting;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +39,22 @@ public class SettingFragment extends Fragment {
 
         binding = FragmentSettingCoachBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+        TextView email=root.findViewById(R.id.emailEditing);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        email.setText( preferences.getString("username","Coach"));
+
+
+
+
+
+
+
+
+
+
+
 
         Button button = root.findViewById(R.id.buttonLogout_coach);
         button.setOnClickListener(new View.OnClickListener() {
