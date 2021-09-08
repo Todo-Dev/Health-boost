@@ -25,6 +25,13 @@ public class Nutrient {
         this.carbs = carbs;
     }
 
+    public Nutrient(String title,
+                    String image) {
+        this.title = title;
+        this.image = image;
+
+    }
+
 //    public int getId() {
 //        return id;
 //    }
