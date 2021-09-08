@@ -23,10 +23,7 @@
             android:name=".CoachActivity"
             android:exported="true"
             android:label="@string/title_activity_coach" />
-   
-        <activity
-            android:name=".FoodListActivity"
-            android:theme="@style/AppTheme" />
+
         <activity
             android:name=".VerificationActivity"
             android:exported="true"
