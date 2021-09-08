@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -18,6 +19,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Coach;
+
 import health.boost.R;
 import health.boost.databinding.FragmentHireCoachBinding;
 import health.boost.databinding.FragmentRecipeCoachBinding;
@@ -25,6 +30,7 @@ import health.boost.databinding.FragmentRecipeCoachBinding;
 
 public class CoachHomeFragment extends Fragment {
 
+    private static final String TAG = "CoachHomeFragment";
     private CoachHomeViewModel coachHomeViewModel;
     private FragmentHireCoachBinding binding;
 
@@ -33,11 +39,21 @@ public class CoachHomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         coachHomeViewModel =
                 new ViewModelProvider(this).get(CoachHomeViewModel.class);
 
         binding = FragmentHireCoachBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        Amplify.API.query(
+                ModelQuery.list(Coach.class , Coach.ROLE.contains("coach")) ,
+                responseCoach -> {
+                    Log.i(TAG, "signIn: response" + responseCoach.getData());
+                } ,
+                error2 -> Log.i(TAG, "signIn: QueryFailure")
+        );
 
 
 
@@ -53,11 +69,11 @@ public class CoachHomeFragment extends Fragment {
 
 
 
-        final TextView textView = binding.textHireCoach;
+//        final TextView textView = binding.textHireCoach;
         coachHomeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+
             }
 
         });
@@ -70,6 +86,7 @@ public class CoachHomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         binding = null;
     }
 }

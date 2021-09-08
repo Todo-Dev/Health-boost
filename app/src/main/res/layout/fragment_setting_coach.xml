@@ -5,68 +5,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#a5de7a"
-
     tools:context=".coachUi.setting.SettingFragment">
 
     <TextView
         android:id="@+id/text_setting_coach"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="setting coach"
+        android:layout_width="196dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:text="setting"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192" />
-
-    <Button
-        android:id="@+id/buttonLogout_coach"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/red"
-        android:text="logout coach"
-        android:textColor="@color/white"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="42dp"
-        />
-
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="108dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="252dp"
-        android:textColor="@color/white"
-
-        android:text="Email"
-        android:textAlignment="center"
-        android:textSize="20sp"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/emailEditing"
-        android:layout_width="279dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="252dp"
-        android:text="Coach Email"
+    <Button
+        android:id="@+id/buttonLogout_coach"
+        android:layout_width="127dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="48dp"
+        android:background="#447c1e"
+        android:text="logout"
         android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/text_setting_coach"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/change_phone_number_coach"
+        style="@style/TextAppearance.AppCompat.Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:background="@color/design_default_color_primary"
+        android:text="Save the changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentPhonenumberEditing_coach" />
+
+    <TextView
+        android:id="@+id/email_coach"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Email"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_coach" />
 
-        />
+    <TextView
+        android:id="@+id/username_coach"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_setting_coach" />
+
+    <TextView
+        android:id="@+id/studentUsernameEditing_coach"
+        android:layout_width="279dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        android:text="Student Username"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/username_coach"
+        app:layout_constraintTop_toBottomOf="@+id/text_setting_coach" />
+
+    <TextView
+        android:id="@+id/studentEmailEditing_coach"
+        android:layout_width="279dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Student Email"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/email_coach"
+        app:layout_constraintTop_toBottomOf="@+id/studentUsernameEditing_coach" />
+
+    <TextView
+        android:id="@+id/phoneNumber_coach"
+        android:layout_width="135dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:text="PhoneNumber"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/studentPhonenumberEditing_coach"
+        app:layout_constraintTop_toBottomOf="@+id/email_coach" />
+
+    <EditText
+        android:id="@+id/studentPhonenumberEditing_coach"
+        android:layout_width="253dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:text="Student phone"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentEmailEditing_coach" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,118 +12,118 @@
         android:id="@+id/text_setting"
         android:layout_width="196dp"
         android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
         android:text="setting"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="127dp"
         android:layout_height="71dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="48dp"
         android:background="#447c1e"
         android:text="logout"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentPhonenumberEditing"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/text_setting"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <Button
+       android:id="@+id/change_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Save the changes"
+        android:background="@color/design_default_color_primary"
+        style="@style/TextAppearance.AppCompat.Widget.Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentPhonenumberEditing" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="108dp"
         android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:text="Email"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="108dp"
         android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
         android:text="Username"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/text_setting" />
 
     <TextView
         android:id="@+id/studentUsernameEditing"
         android:layout_width="279dp"
         android:layout_height="48dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="44dp"
         android:text="Student Username"
         android:textAlignment="center"
         android:textColor="@color/white"
-
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintStart_toEndOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/text_setting" />
 
     <TextView
         android:id="@+id/studentEmailEditing"
         android:layout_width="279dp"
         android:layout_height="48dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="276dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:text="Student Email"
         android:textAlignment="center"
         android:textColor="@color/white"
-
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/studentUsernameEditing" />
 
     <TextView
         android:id="@+id/phoneNumber"
         android:layout_width="135dp"
         android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
         android:text="PhoneNumber"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/studentPhonenumberEditing"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
         android:id="@+id/studentPhonenumberEditing"
         android:layout_width="253dp"
         android:layout_height="46dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="24dp"
         android:text="Student phone"
         android:textAlignment="center"
         android:textColor="@color/white"
-
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentEmailEditing" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

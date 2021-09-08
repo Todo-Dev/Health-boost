@@ -16,6 +16,7 @@ import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Coach;
 import com.amplifyframework.datastore.generated.model.Student;
+import com.amplifyframework.datastore.generated.model.Trainer;
 
 import java.util.UUID;
 
@@ -38,7 +39,7 @@ public class VerificationActivity extends AppCompatActivity {
         String password = intent.getExtras().getString("password", "");
         String email = intent.getExtras().getString("email", "");
         String role = intent.getExtras().getString("role", "");
-        int phoneNumber = Integer.parseInt(intent.getExtras().getString("phoneNumber", ""));
+        String phoneNumber = intent.getExtras().getString("phoneNumber", "");
         String firstName = intent.getExtras().getString("firstName", "");
         String lastName = intent.getExtras().getString("lastName", "");
 
@@ -48,28 +49,30 @@ public class VerificationActivity extends AppCompatActivity {
         });
 
         saveHandler = new Handler(getMainLooper(), msg -> {
+            Log.i(TAG, "onCreate: role is ===> " + role);
            if (role.equals("student")){
-               Coach coach = Coach.justId(UUID.randomUUID().toString());
+               Trainer coach = Trainer.justId(UUID.randomUUID().toString());
                Student student = Student.builder()
                        .firstName(firstName)
                        .lastName(lastName)
                        .username(username)
                        .email(email)
-                       .phoneNumber(phoneNumber)
+                       .phoneNumber(Integer.parseInt(phoneNumber))
                        .role(role)
-                       .coach(coach)
+                       .trainer(coach)
                        .build();
                saveStudentToAPI(student);
            }else{
-               Coach coach = Coach.builder()
+               Log.i(TAG, "onCreate: IN COACH ===> " + role);
+               Trainer coach = Trainer.builder()
                        .firstName(firstName)
                        .lastName(lastName)
                        .username(username)
                        .email(email)
-                       .phoneNumber(phoneNumber)
+                       .phoneNumber(Integer.parseInt(phoneNumber))
                        .role(role)
                        .build();
-               saveCoachToAPI(coach);
+               saveTrainerToAPI(coach);
            }
             return false;
         });
@@ -114,14 +117,20 @@ public class VerificationActivity extends AppCompatActivity {
 
         Amplify.API.mutate(
                 ModelMutation.create(student),
-                response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
-                error -> Log.e("MyAmplifyApp", "Create failed", error)
+                response -> Log.i("save student", "Added Todo with id: " + response.getData().getId()),
+                error -> Log.e("save student", "Create failed", error)
         );
     }
     public static void saveCoachToAPI(Coach coach) {
         Log.i(TAG, "saveCoachToAPI: in save coach "+ coach);
         Amplify.API.mutate(ModelMutation.create(coach),
-                response  -> Log.i(TAG, "Saved coach to api : " + response.getData().getId()),
+                response  -> Log.i(TAG, "Saved coach to api : " + response.getData()),
                 error -> Log.e(TAG, "Could not save coach to API/dynamodb", error));
+    }
+    public static void saveTrainerToAPI(Trainer trainer) {
+        Log.i(TAG, "saveCoachToAPI: in save trainer "+ trainer);
+        Amplify.API.mutate(ModelMutation.create(trainer),
+                response  -> Log.i(TAG, "Saved trainer to api : " + response.getData()),
+                error -> Log.e(TAG, "Could not save trainer to API/dynamodb", error));
     }
 }

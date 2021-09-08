@@ -11,28 +11,6 @@ mutation CreateCoach(
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -49,28 +27,6 @@ mutation UpdateCoach(
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -87,6 +43,22 @@ mutation DeleteCoach(
     email
     phoneNumber
     role
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateTrainer(
+  $input: CreateTrainerInput!
+  $condition: ModelTrainerConditionInput
+) {
+  createTrainer(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
     students {
       items {
         id
@@ -96,19 +68,74 @@ mutation DeleteCoach(
         email
         phoneNumber
         role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
+        coachId
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateTrainer(
+  $input: UpdateTrainerInput!
+  $condition: ModelTrainerConditionInput
+) {
+  updateTrainer(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteTrainer(
+  $input: DeleteTrainerInput!
+  $condition: ModelTrainerConditionInput
+) {
+  deleteTrainer(input: $input, condition: $condition) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -125,8 +152,8 @@ mutation CreateStudent(
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -136,17 +163,10 @@ mutation CreateStudent(
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -163,8 +183,8 @@ mutation UpdateStudent(
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -174,17 +194,10 @@ mutation UpdateStudent(
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -201,8 +214,8 @@ mutation DeleteStudent(
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -212,17 +225,10 @@ mutation DeleteStudent(
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }

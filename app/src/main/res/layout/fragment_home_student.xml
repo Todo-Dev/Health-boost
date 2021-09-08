@@ -5,10 +5,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal"
     tools:context=".studentUi.home.StudentHomeFragment">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/coach_image_home"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/ic_personal" />
+
+
+        <LinearLayout
+            android:layout_width="115dp"
+            android:layout_height="145dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toStartOf="@+id/call_home"
+            android:layout_toEndOf="@+id/coach_image_home"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/coach_name_title_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Coach"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/coach_name_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coach name"
+                android:textSize="18sp"/>
+
+
+            <TextView
+                android:id="@+id/coach_phone_title_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coach phone"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/coach_phone_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coach phone"
+
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/call_home"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="26dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_phone" />
+    </RelativeLayout>
+
+    
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"

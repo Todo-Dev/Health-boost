@@ -8,28 +8,6 @@ subscription OnCreateCoach {
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -43,28 +21,6 @@ subscription OnUpdateCoach {
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -78,6 +34,19 @@ subscription OnDeleteCoach {
     email
     phoneNumber
     role
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTrainer {
+  onCreateTrainer {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
     students {
       items {
         id
@@ -87,19 +56,68 @@ subscription OnDeleteCoach {
         email
         phoneNumber
         role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
+        coachId
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTrainer {
+  onUpdateTrainer {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTrainer {
+  onDeleteTrainer {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -113,8 +131,8 @@ subscription OnCreateStudent {
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -124,17 +142,10 @@ subscription OnCreateStudent {
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -148,8 +159,8 @@ subscription OnUpdateStudent {
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -159,17 +170,10 @@ subscription OnUpdateStudent {
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -183,8 +187,8 @@ subscription OnDeleteStudent {
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -194,17 +198,10 @@ subscription OnDeleteStudent {
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }

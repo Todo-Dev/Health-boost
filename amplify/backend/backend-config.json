@@ -8,8 +8,8 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": "healthBoostAPI"
+              "apiKeyExpirationDays": 20,
+              "description": "mohammad"
             }
           },
           "additionalAuthenticationProviders": []
@@ -18,7 +18,7 @@
     }
   },
   "auth": {
-    "healthboostd486fbce": {
+    "healthboost268e4668": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -39,6 +39,12 @@
           "SMS"
         ]
       }
+    }
+  },
+  "storage": {
+    "s3a77324d5": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

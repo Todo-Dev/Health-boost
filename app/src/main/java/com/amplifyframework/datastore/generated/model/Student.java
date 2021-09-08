@@ -20,7 +20,7 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the Student type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "Students")
-@Index(name = "myStudent", fields = {"coachID"})
+@Index(name = "myStudent", fields = {"coachId"})
 public final class Student implements Model {
   public static final QueryField ID = field("Student", "id");
   public static final QueryField FIRST_NAME = field("Student", "firstName");
@@ -29,15 +29,15 @@ public final class Student implements Model {
   public static final QueryField EMAIL = field("Student", "email");
   public static final QueryField PHONE_NUMBER = field("Student", "phoneNumber");
   public static final QueryField ROLE = field("Student", "role");
-  public static final QueryField COACH = field("Student", "coachID");
+  public static final QueryField TRAINER = field("Student", "coachId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String", isRequired = true) String firstName;
-  private final @ModelField(targetType="String", isRequired = true) String lastName;
-  private final @ModelField(targetType="String", isRequired = true) String username;
-  private final @ModelField(targetType="String", isRequired = true) String email;
-  private final @ModelField(targetType="Int", isRequired = true) Integer phoneNumber;
-  private final @ModelField(targetType="String", isRequired = true) String role;
-  private final @ModelField(targetType="Coach") @BelongsTo(targetName = "coachID", type = Coach.class) Coach coach;
+  private final @ModelField(targetType="String") String firstName;
+  private final @ModelField(targetType="String") String lastName;
+  private final @ModelField(targetType="String") String username;
+  private final @ModelField(targetType="String") String email;
+  private final @ModelField(targetType="Int") Integer phoneNumber;
+  private final @ModelField(targetType="String") String role;
+  private final @ModelField(targetType="Trainer") @BelongsTo(targetName = "coachId", type = Trainer.class) Trainer trainer;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -68,8 +68,8 @@ public final class Student implements Model {
       return role;
   }
   
-  public Coach getCoach() {
-      return coach;
+  public Trainer getTrainer() {
+      return trainer;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -80,7 +80,7 @@ public final class Student implements Model {
       return updatedAt;
   }
   
-  private Student(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Coach coach) {
+  private Student(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Trainer trainer) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -88,7 +88,7 @@ public final class Student implements Model {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.role = role;
-    this.coach = coach;
+    this.trainer = trainer;
   }
   
   @Override
@@ -106,7 +106,7 @@ public final class Student implements Model {
               ObjectsCompat.equals(getEmail(), student.getEmail()) &&
               ObjectsCompat.equals(getPhoneNumber(), student.getPhoneNumber()) &&
               ObjectsCompat.equals(getRole(), student.getRole()) &&
-              ObjectsCompat.equals(getCoach(), student.getCoach()) &&
+              ObjectsCompat.equals(getTrainer(), student.getTrainer()) &&
               ObjectsCompat.equals(getCreatedAt(), student.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), student.getUpdatedAt());
       }
@@ -122,7 +122,7 @@ public final class Student implements Model {
       .append(getEmail())
       .append(getPhoneNumber())
       .append(getRole())
-      .append(getCoach())
+      .append(getTrainer())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -140,14 +140,14 @@ public final class Student implements Model {
       .append("email=" + String.valueOf(getEmail()) + ", ")
       .append("phoneNumber=" + String.valueOf(getPhoneNumber()) + ", ")
       .append("role=" + String.valueOf(getRole()) + ", ")
-      .append("coach=" + String.valueOf(getCoach()) + ", ")
+      .append("trainer=" + String.valueOf(getTrainer()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
       .toString();
   }
   
-  public static FirstNameStep builder() {
+  public static BuildStep builder() {
       return new Builder();
   }
   
@@ -190,46 +190,22 @@ public final class Student implements Model {
       email,
       phoneNumber,
       role,
-      coach);
+      trainer);
   }
-  public interface FirstNameStep {
-    LastNameStep firstName(String firstName);
-  }
-  
-
-  public interface LastNameStep {
-    UsernameStep lastName(String lastName);
-  }
-  
-
-  public interface UsernameStep {
-    EmailStep username(String username);
-  }
-  
-
-  public interface EmailStep {
-    PhoneNumberStep email(String email);
-  }
-  
-
-  public interface PhoneNumberStep {
-    RoleStep phoneNumber(Integer phoneNumber);
-  }
-  
-
-  public interface RoleStep {
-    BuildStep role(String role);
-  }
-  
-
   public interface BuildStep {
     Student build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep coach(Coach coach);
+    BuildStep firstName(String firstName);
+    BuildStep lastName(String lastName);
+    BuildStep username(String username);
+    BuildStep email(String email);
+    BuildStep phoneNumber(Integer phoneNumber);
+    BuildStep role(String role);
+    BuildStep trainer(Trainer trainer);
   }
   
 
-  public static class Builder implements FirstNameStep, LastNameStep, UsernameStep, EmailStep, PhoneNumberStep, RoleStep, BuildStep {
+  public static class Builder implements BuildStep {
     private String id;
     private String firstName;
     private String lastName;
@@ -237,7 +213,7 @@ public final class Student implements Model {
     private String email;
     private Integer phoneNumber;
     private String role;
-    private Coach coach;
+    private Trainer trainer;
     @Override
      public Student build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -250,54 +226,48 @@ public final class Student implements Model {
           email,
           phoneNumber,
           role,
-          coach);
+          trainer);
     }
     
     @Override
-     public LastNameStep firstName(String firstName) {
-        Objects.requireNonNull(firstName);
+     public BuildStep firstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
     
     @Override
-     public UsernameStep lastName(String lastName) {
-        Objects.requireNonNull(lastName);
+     public BuildStep lastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
     
     @Override
-     public EmailStep username(String username) {
-        Objects.requireNonNull(username);
+     public BuildStep username(String username) {
         this.username = username;
         return this;
     }
     
     @Override
-     public PhoneNumberStep email(String email) {
-        Objects.requireNonNull(email);
+     public BuildStep email(String email) {
         this.email = email;
         return this;
     }
     
     @Override
-     public RoleStep phoneNumber(Integer phoneNumber) {
-        Objects.requireNonNull(phoneNumber);
+     public BuildStep phoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
     
     @Override
      public BuildStep role(String role) {
-        Objects.requireNonNull(role);
         this.role = role;
         return this;
     }
     
     @Override
-     public BuildStep coach(Coach coach) {
-        this.coach = coach;
+     public BuildStep trainer(Trainer trainer) {
+        this.trainer = trainer;
         return this;
     }
     
@@ -313,7 +283,7 @@ public final class Student implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Coach coach) {
+    private CopyOfBuilder(String id, String firstName, String lastName, String username, String email, Integer phoneNumber, String role, Trainer trainer) {
       super.id(id);
       super.firstName(firstName)
         .lastName(lastName)
@@ -321,7 +291,7 @@ public final class Student implements Model {
         .email(email)
         .phoneNumber(phoneNumber)
         .role(role)
-        .coach(coach);
+        .trainer(trainer);
     }
     
     @Override
@@ -355,8 +325,8 @@ public final class Student implements Model {
     }
     
     @Override
-     public CopyOfBuilder coach(Coach coach) {
-      return (CopyOfBuilder) super.coach(coach);
+     public CopyOfBuilder trainer(Trainer trainer) {
+      return (CopyOfBuilder) super.trainer(trainer);
     }
   }
   

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Student;
@@ -48,16 +50,35 @@ public class SettingFragment extends Fragment {
         getCurrentStudent();
         TextView email=root.findViewById(R.id.studentEmailEditing);
         TextView username=root.findViewById(R.id.studentUsernameEditing);
-        TextView phonenumber=root.findViewById(R.id.studentPhonenumberEditing);
+        TextView phoneNumber=root.findViewById(R.id.studentPhonenumberEditing);
 
         handler=new Handler(Looper.getMainLooper(),msg -> {
             email.setText(currentStudent.getEmail());
             username.setText(currentStudent.getUsername());
-            phonenumber.setText(currentStudent.getPhoneNumber().toString());
+            phoneNumber.setText(0+currentStudent.getPhoneNumber().toString());
 
             return true;
         });
 
+        Button saveChanges= root.findViewById(R.id.change_phone_number);
+
+        saveChanges.setOnClickListener(v -> {
+            String newPhoneNumber= phoneNumber.getText().toString();
+            if (!newPhoneNumber.isEmpty()&& !newPhoneNumber.equals(currentStudent.getPhoneNumber().toString())){
+                Student student = Student.builder()
+                        .trainer(currentStudent.getTrainer())
+                        .id(currentStudent.getId())
+                        .email(currentStudent.getEmail())
+                        .username(currentStudent.getUsername())
+                        .firstName(currentStudent.getFirstName())
+                        .lastName(currentStudent.getLastName())
+                        .phoneNumber(Integer.parseInt(newPhoneNumber))
+                        .role(currentStudent.getRole())
+                        .build();
+                updateStudent(student);
+                Toast.makeText(getContext(), "Coach has been hired", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         Button button = root.findViewById(R.id.buttonLogout);
@@ -81,11 +102,11 @@ public class SettingFragment extends Fragment {
 
 
 
-        final TextView textView = binding.textSetting;
+
         settingViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+
             }
         });
         return root;
@@ -121,6 +142,17 @@ public class SettingFragment extends Fragment {
                 });
     }
 
+    public void updateStudent(Student student){
+        Log.i(TAG, "update student: in update");
+        Amplify.API.mutate(ModelMutation.update(student),
+                res-> {
+                    Log.i(TAG, "update student: is updated "+ res);
+                },
+                err-> {
+                    Log.i(TAG, "update student: failed to updated" + err);
+                }
+        );
+    }
 
 
 }

@@ -1,38 +1,4 @@
 # this is an auto generated file. This will be overwritten
-query SyncCoaches(
-  $filter: ModelCoachFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncCoaches(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      firstName
-      lastName
-      username
-      email
-      phoneNumber
-      role
-      students {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
 query GetCoach($id: ID!) {
   getCoach(id: $id) {
     id
@@ -42,28 +8,6 @@ query GetCoach($id: ID!) {
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        coachID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -82,32 +26,46 @@ query ListCoaches(
       email
       phoneNumber
       role
-      students {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
     nextToken
-    startedAt
   }
 }
-query SyncStudents(
-  $filter: ModelStudentFilterInput
+query GetTrainer($id: ID!) {
+  getTrainer(id: $id) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListTrainers(
+  $filter: ModelTrainerFilterInput
   $limit: Int
   $nextToken: String
-  $lastSync: AWSTimestamp
 ) {
-  syncStudents(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
+  listTrainers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       firstName
@@ -116,29 +74,13 @@ query SyncStudents(
       email
       phoneNumber
       role
-      coachID
-      coach {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
+      students {
+        nextToken
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
     nextToken
-    startedAt
   }
 }
 query GetStudent($id: ID!) {
@@ -150,8 +92,8 @@ query GetStudent($id: ID!) {
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -161,17 +103,10 @@ query GetStudent($id: ID!) {
       role
       students {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -190,8 +125,8 @@ query ListStudents(
       email
       phoneNumber
       role
-      coachID
-      coach {
+      coachId
+      trainer {
         id
         firstName
         lastName
@@ -199,19 +134,12 @@ query ListStudents(
         email
         phoneNumber
         role
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
     nextToken
-    startedAt
   }
 }
