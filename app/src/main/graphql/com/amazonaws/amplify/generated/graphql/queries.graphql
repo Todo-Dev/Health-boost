@@ -8,21 +8,6 @@ query GetCoach($id: ID!) {
     email
     phoneNumber
     role
-    students {
-      items {
-        id
-        firstName
-        lastName
-        username
-        email
-        phoneNumber
-        role
-        coachID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
     createdAt
     updatedAt
   }
@@ -33,6 +18,54 @@ query ListCoaches(
   $nextToken: String
 ) {
   listCoaches(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      firstName
+      lastName
+      username
+      email
+      phoneNumber
+      role
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetTrainer($id: ID!) {
+  getTrainer(id: $id) {
+    id
+    firstName
+    lastName
+    username
+    email
+    phoneNumber
+    role
+    students {
+      items {
+        id
+        firstName
+        lastName
+        username
+        email
+        phoneNumber
+        role
+        coachId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListTrainers(
+  $filter: ModelTrainerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTrainers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       firstName
@@ -59,8 +92,8 @@ query GetStudent($id: ID!) {
     email
     phoneNumber
     role
-    coachID
-    coach {
+    coachId
+    trainer {
       id
       firstName
       lastName
@@ -92,8 +125,8 @@ query ListStudents(
       email
       phoneNumber
       role
-      coachID
-      coach {
+      coachId
+      trainer {
         id
         firstName
         lastName

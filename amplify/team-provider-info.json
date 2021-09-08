@@ -1,20 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-healthboost-dev-161707-authRole",
-      "UnauthRoleArn": "arn:aws:iam::821703531319:role/amplify-healthboost-dev-161707-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::821703531319:role/amplify-healthboost-dev-161707-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-healthboost-dev-161707-deployment",
-      "UnauthRoleName": "amplify-healthboost-dev-161707-unauthRole",
-      "StackName": "amplify-healthboost-dev-161707",
-      "StackId": "arn:aws:cloudformation:us-east-1:821703531319:stack/amplify-healthboost-dev-161707/d0be2e90-0f14-11ec-8402-122c900fa557",
-      "AmplifyAppId": "d1xvy8awsh4go8"
+      "AuthRoleName": "amplify-healthboost-dev-111941-authRole",
+      "UnauthRoleArn": "arn:aws:iam::729767840333:role/amplify-healthboost-dev-111941-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::729767840333:role/amplify-healthboost-dev-111941-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-healthboost-dev-111941-deployment",
+      "UnauthRoleName": "amplify-healthboost-dev-111941-unauthRole",
+      "StackName": "amplify-healthboost-dev-111941",
+      "StackId": "arn:aws:cloudformation:us-east-2:729767840333:stack/amplify-healthboost-dev-111941/8737cbe0-107d-11ec-b242-0a9579c22774",
+      "AmplifyAppId": "d1l569vo06ft0f"
     },
     "categories": {
       "auth": {
-        "healthboost9bc380b0": {},
-        "healthboost4de08ce3": {}
+        "healthboost268e4668": {}
       }
     }
   }

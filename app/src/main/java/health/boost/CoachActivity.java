@@ -1,6 +1,7 @@
 package health.boost;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -21,6 +22,7 @@ public class CoachActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         binding = ActivityCoachBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

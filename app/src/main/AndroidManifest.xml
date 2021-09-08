@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,8 @@
         <activity
             android:name=".StudentActivity"
             android:exported="true"
-            android:label="@string/title_activity_student" />
+            android:label="@string/title_activity_student"
+            />
         <activity
             android:name=".CoachActivity"
             android:exported="true"
