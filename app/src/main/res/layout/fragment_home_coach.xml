@@ -7,4 +7,11 @@
     tools:context=".coachUi.home.CoachHomeFragment">
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_student1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

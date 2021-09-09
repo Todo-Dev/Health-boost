@@ -64,7 +64,7 @@ public class SettingFragment extends Fragment {
             return true;
         });
 
-        Button saveChanges= root.findViewById(R.id.change_phone_number);
+        Button saveChanges= root.findViewById(R.id.change_phone_number_coach);
         saveChanges.setOnClickListener(v -> {
             String newPhoneNumber= phoneNumber.getText().toString();
             if (!newPhoneNumber.isEmpty()&& !newPhoneNumber.equals(currentTrainer.getPhoneNumber().toString())){

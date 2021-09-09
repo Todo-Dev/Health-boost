@@ -49,8 +49,6 @@ query GetTrainer($id: ID!) {
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -93,8 +91,6 @@ query GetStudent($id: ID!) {
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {
@@ -128,8 +124,6 @@ query ListStudents(
       username
       email
       phoneNumber
-      weight
-      height
       role
       coachId
       trainer {

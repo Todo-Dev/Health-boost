@@ -55,8 +55,6 @@ subscription OnCreateTrainer {
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -85,8 +83,6 @@ subscription OnUpdateTrainer {
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -115,8 +111,6 @@ subscription OnDeleteTrainer {
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -136,8 +130,6 @@ subscription OnCreateStudent {
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {
@@ -166,8 +158,6 @@ subscription OnUpdateStudent {
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {
@@ -196,8 +186,6 @@ subscription OnDeleteStudent {
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {

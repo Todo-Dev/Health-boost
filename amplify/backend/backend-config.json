@@ -9,7 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 20,
-              "description": "mohammad"
+              "description": "hello"
             }
           },
           "additionalAuthenticationProviders": []
@@ -18,7 +18,29 @@
     }
   },
   "auth": {
-    "healthboost268e4668": {
+    "healthboost9bc380b0": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "loginMechanisms": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ]
+      }
+    },
+    "healthboost4de08ce3": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -42,7 +64,7 @@
     }
   },
   "storage": {
-    "s3a77324d5": {
+    "s3bedb7571": {
       "service": "S3",
       "providerPlugin": "awscloudformation"
     }

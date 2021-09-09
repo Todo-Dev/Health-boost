@@ -28,7 +28,7 @@ import java.util.NoSuchElementException;
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
-    String currentLoggedId;
+    public String currentLoggedId;
 
 
  ;
@@ -101,6 +101,11 @@ public class LoginActivity extends AppCompatActivity {
                                             ModelQuery.list(Trainer.class, Trainer.EMAIL.contains(username)),
                                             responseCoach -> {
                                                 Log.i(TAG, "signIn: response" + responseCoach.getData());
+                                                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+                                                SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
+                                                preferenceEditor.putString("trainerId" , responseCoach.getData().getItems().iterator().next().getId());
+                                                preferenceEditor.apply();
+
                                             },
                                             error2 -> Log.i(TAG, "signIn: QueryFailure")
                                     );

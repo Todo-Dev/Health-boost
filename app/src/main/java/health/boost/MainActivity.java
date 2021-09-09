@@ -65,33 +65,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        EditText weight = findViewById(R.id.weight);
-        EditText height = findViewById(R.id.height);
-        TextView bmires = findViewById(R.id.result);
-
-
-
 //        String weight = ((EditText) findViewById(R.id.weight)).getText().toString();
 //        String height = ((EditText) findViewById(R.id.height)).getText().toString();
 
 
 //
-<<<<<<< HEAD
 
-        Button nutrientIngredientButton = MainActivity.this.findViewById(R.id.button_ingredientPage);
-        nutrientIngredientButton.setOnClickListener(view -> {
-            Intent newIntent2 = new Intent(getApplicationContext(), IngredientActivity.class);
-            startActivity(newIntent2);
-        });
-=======
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bmi(weight, height, bmires);
-            }
-        });
+
      
->>>>>>> main
     }
 
 

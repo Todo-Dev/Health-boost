@@ -67,8 +67,6 @@ mutation CreateTrainer(
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -100,8 +98,6 @@ mutation UpdateTrainer(
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -133,8 +129,6 @@ mutation DeleteTrainer(
         username
         email
         phoneNumber
-        weight
-        height
         role
         coachId
         createdAt
@@ -157,8 +151,6 @@ mutation CreateStudent(
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {
@@ -190,8 +182,6 @@ mutation UpdateStudent(
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {
@@ -223,8 +213,6 @@ mutation DeleteStudent(
     username
     email
     phoneNumber
-    weight
-    height
     role
     coachId
     trainer {
